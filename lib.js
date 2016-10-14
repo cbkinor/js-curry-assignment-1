@@ -36,6 +36,26 @@ function (listing) {
 /**
  *  long hand for below
 */
+const calculateTotalsFinal =
+  (listings) =>
+  (carts) =>
+  carts.map(
+    cart => ({
+      customer: cart.customer,
+      total:
+        cart.items.reduce(
+          (prior, current) =>
+            prior +
+              listings
+              .filter(l => l.name === current)
+              .map(l => l.price)
+              .reduce((prior, current) => prior + current, 0),
+        0
+      )
+    })
+  )
+
+
 const calculateTotals1 =
 listings =>
 carts => {
